@@ -1,0 +1,7 @@
+{
+  "extends": "@appril/dev/tsconfig.src.json",
+  "include": [
+    ".",
+    "./env.d.ts"
+  ]
+}
