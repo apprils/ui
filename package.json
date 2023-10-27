@@ -36,16 +36,16 @@
     "vue": "^3.3.7"
   },
   "devDependencies": {
-    "@appril/dev": "^0.2.0",
-    "@appril/scripts": "^0.2.0",
+    "@appril/dev": "^0.2.2",
+    "@appril/scripts": "^0.2.2",
     "@babel/types": "^7.23.0",
     "@types/bootstrap": "^5.2.8",
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.9",
     "@vitejs/plugin-vue": "^4.4.0",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-checker": "^0.6.2",
-    "vite-plugin-dts": "^3.6.1",
-    "vue-tsc": "^1.8.20"
+    "vite-plugin-dts": "^3.6.2",
+    "vue-tsc": "^1.8.22"
   }
 }
