@@ -1,3 +1,4 @@
+
 <script setup lang="ts">
 
 import { nextTick } from "vue";
@@ -88,7 +89,11 @@ function mounted() {
       </div>
     </template>
 
-    <slot name="content" :hide="hide" />
+    <template v-if="$slots.bare">
+      <div class="appril-ui--popover--bare">
+        <slot name="bare" :hide="hide" />
+      </div>
+    </template>
 
   </template>
 </VMenu>
@@ -122,7 +127,8 @@ function mounted() {
   background: #efefef;
 }
 
-.appril-ui--popover--list [divider] {
+.appril-ui--popover--list [divider],
+.appril-ui--popover--bare [divider] {
   display: block;
   margin: 5px 0;
   padding: 0;

@@ -1,12 +1,12 @@
 {
   "name": "@appril/ui",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "Various UI Plugins for Appril Apps",
   "author": "Slee Woo",
   "license": "MIT",
   "engines": {
-    "node": "20.8",
-    "npm": "10"
+    "node": "20.10",
+    "npm": "10.2"
   },
   "files": [
     "pkg/*"
@@ -27,25 +27,27 @@
     "build": "cd lib; vite build",
     "// ✨ publish": "",
     "prepub": "npm run build",
-    "pub": "npm pub"
+    "pub": "npm pub",
+    "postpub": "mkdir -p var/pub; npm pack --pack-destination var/pub"
   },
   "peerDependencies": {
-    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@fortawesome/fontawesome-free": "^6.5.1",
     "bootstrap": "^5.3.2",
     "floating-vue": "^2.0.0-beta.24",
-    "vue": "^3.3.7"
+    "vue": "^3.3.13"
   },
   "devDependencies": {
-    "@appril/dev": "^0.2.0",
-    "@appril/scripts": "^0.2.0",
-    "@babel/types": "^7.23.0",
-    "@types/bootstrap": "^5.2.8",
-    "@types/node": "^20.8.8",
-    "@vitejs/plugin-vue": "^4.4.0",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
+    "@appril/dev": "^0.2.2",
+    "@appril/scripts": "^0.2.2",
+    "@babel/types": "^7.23.6",
+    "@types/bootstrap": "^5.2.10",
+    "@types/node": "^20.10.5",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "release-it": "^17.0.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
     "vite-plugin-checker": "^0.6.2",
-    "vite-plugin-dts": "^3.6.1",
-    "vue-tsc": "^1.8.20"
+    "vite-plugin-dts": "^3.7.0",
+    "vue-tsc": "^1.8.27"
   }
 }
