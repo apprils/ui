@@ -34,15 +34,15 @@
     "@fortawesome/fontawesome-free": "^6.5.1",
     "bootstrap": "^5.3.2",
     "floating-vue": "^2.0.0-beta.24",
-    "vue": "^3.3.13"
+    "vue": "^3.4.3"
   },
   "devDependencies": {
-    "@appril/dev": "^0.2.2",
-    "@appril/scripts": "^0.2.2",
+    "@appril/dev": "^0.2.3",
+    "@appril/scripts": "^0.2.3",
     "@babel/types": "^7.23.6",
     "@types/bootstrap": "^5.2.10",
-    "@types/node": "^20.10.5",
-    "@vitejs/plugin-vue": "^5.0.0",
+    "@types/node": "^20.10.6",
+    "@vitejs/plugin-vue": "^5.0.2",
     "release-it": "^17.0.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
