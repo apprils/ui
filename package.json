@@ -1,6 +1,6 @@
 {
   "name": "@appril/ui",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Various UI Plugins for Appril Apps",
   "author": "Slee Woo",
   "license": "MIT",
@@ -28,8 +28,13 @@
   },
   "release-it": {
     "hooks": {
-      "before:init": [ "npm run build" ],
-      "after:release": [ "mkdir -p var/pub", "npm pack --pack-destination var/pub" ]
+      "before:init": [
+        "npm run build"
+      ],
+      "after:release": [
+        "mkdir -p var/pub",
+        "npm pack --pack-destination var/pub"
+      ]
     }
   },
   "peerDependencies": {
