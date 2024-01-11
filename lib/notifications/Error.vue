@@ -7,14 +7,12 @@ defineOptions({
 
 import Modal from "../modal/Modal.vue";
 
-const props = defineProps({
-  modelValue: null,
-})
+const model = defineModel()
 
-const emit = defineEmits(["hide", "update:modelValue"])
+const emit = defineEmits([ "hide" ])
 
 function hide() {
-  emit("update:modelValue", null)
+  model.value = null
   emit("hide")
 }
 
@@ -66,7 +64,7 @@ function getErrorMessage(error: unknown) {
 </script>
 
 <template>
-<Teleport v-if="props.modelValue" to="body">
+<Teleport v-if="model" to="body">
   <Modal centered large :static="false" :zindex="1_000_000" @close="hide">
 
     <template #header.bg-danger-subtle>
@@ -80,9 +78,9 @@ function getErrorMessage(error: unknown) {
       <slot>
         <div style="white-space: pre;">
           {{
-            typeof props.modelValue === "string"
-              ? props.modelValue
-              : getErrorMessage(props.modelValue)
+            typeof model === "string"
+              ? model
+              : getErrorMessage(model)
           }}
         </div>
       </slot>

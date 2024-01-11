@@ -5,11 +5,9 @@ import { nextTick } from "vue";
 
 import Modal from "../modal/Modal.vue";
 
-const props = defineProps<{
-  modelValue: null | unknown;
-}>()
+const model = defineModel()
 
-const emit = defineEmits([ "onConfirm", "onReject", "update:modelValue"])
+const emit = defineEmits([ "onConfirm", "onReject" ])
 
 function confirm() {
   emit("onConfirm")
@@ -22,14 +20,14 @@ function reject() {
 }
 
 function close() {
-  emit("update:modelValue", null)
+  model.value = null
 }
 
 </script>
 
 <template>
 
-<Teleport v-if="props.modelValue" to="body">
+<Teleport v-if="model" to="body">
   <Modal scrollable>
 
     <template #body>

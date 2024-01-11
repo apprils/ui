@@ -6,7 +6,6 @@ import type { Position } from "./types";
 import config from "../config";
 
 type Props = {
-  modelValue: string | boolean | null;
   position?: Position;
   delay?: number;
   autohide?: boolean;
@@ -15,32 +14,33 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: null,
   position: config.successPosition as Position,
   delay: config.successDelay,
   autohide: config.successAutohide,
   animation: config.successAnimation,
 })
 
-const emit = defineEmits(["hide", "update:modelValue"])
+const model = defineModel()
+
+const emit = defineEmits([ "hide" ])
 
 function hide() {
-  emit("update:modelValue", null)
+  model.value = null
   emit("hide")
 }
 
 </script>
 
 <template>
-<Notification v-if="props.modelValue" v-bind="props" @hide="hide"
+<Notification v-if="model" v-bind="props" @hide="hide"
   class="text-bg-primary border-0 align-items-center">
 
   <div class="d-flex">
     <div class="toast-body me-auto">
       <slot>
         {{
-          typeof props.modelValue === "string"
-            ? props.modelValue
+          typeof model === "string"
+            ? model
             : config.successMessage
         }}
       </slot>

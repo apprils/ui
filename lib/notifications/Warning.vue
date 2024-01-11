@@ -6,7 +6,6 @@ import type { Position } from "./types";
 import config from "../config";
 
 type Props = {
-  modelValue: string | null;
   position?: Position;
   delay?: number;
   autohide?: boolean;
@@ -15,24 +14,25 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  modelValue: null,
   position: config.warningPosition as Position,
   delay: config.warningDelay,
   autohide: config.warningAutohide,
   animation: config.warningAnimation,
 })
 
-const emit = defineEmits(["hide", "update:modelValue"])
+const model = defineModel()
+
+const emit = defineEmits([ "hide" ])
 
 function hide() {
-  emit("update:modelValue", null)
+  model.value = null
   emit("hide")
 }
 
 </script>
 
 <template>
-<Notification v-if="props.modelValue" v-bind="props" @hide="hide"
+<Notification v-if="model" v-bind="props" @hide="hide"
   class="bg-danger-subtle border-0">
 
   <slot name="header">
@@ -48,7 +48,7 @@ function hide() {
 
   <div class="toast-body me-auto">
     <slot>
-      {{ props.modelValue }}
+      {{ model }}
     </slot>
   </div>
 
