@@ -23,23 +23,22 @@
     }
   },
   "scripts": {
+    "// ✨ lint": "",
+    "lint": "biome lint ./lib",
     "// ✨ build": "",
-    "build": "cd lib; vite build"
+    "build": "set -e; npm run lint; cd lib; vite build"
   },
   "release-it": {
     "hooks": {
       "before:init": [
         "npm run build"
-      ],
-      "after:release": [
-        "mkdir -p var/pub",
-        "npm pack --pack-destination var/pub"
       ]
     }
   },
   "devDependencies": {
     "@appril/tsconfig": "^0.2.2",
     "@babel/types": "^7.23.6",
+    "@biomejs/biome": "^1.5.3",
     "@types/bootstrap": "^5.2.10",
     "@types/node": "^20.11.5",
     "@vitejs/plugin-vue": "^5.0.3",
