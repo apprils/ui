@@ -1,4 +1,3 @@
-
 import type { App } from "vue";
 
 import confirmPlugin from "./confirm";
@@ -15,6 +14,7 @@ import IconOrSpinner from "./icon/IconOrSpinner.vue";
 import Modal from "./modal/Modal.vue";
 
 import NotificationContainers from "./notifications/NotificationContainers.vue";
+// biome-ignore lint:
 import Error from "./notifications/Error.vue";
 import Success from "./notifications/Success.vue";
 import Warning from "./notifications/Warning.vue";
@@ -22,24 +22,30 @@ import Warning from "./notifications/Warning.vue";
 import Popover from "./popover/Popover.vue";
 
 export {
-  confirmPlugin, Confirm,
-  iconPlugin, Icon, IconOrSpinner,
-  modalPlugin, Modal,
-  notificationsPlugin, NotificationContainers, Error, Success,
-  popoverPlugin, Popover,
-}
+  confirmPlugin,
+  Confirm,
+  iconPlugin,
+  Icon,
+  IconOrSpinner,
+  modalPlugin,
+  Modal,
+  notificationsPlugin,
+  NotificationContainers,
+  Error,
+  Success,
+  popoverPlugin,
+  Popover,
+};
 
 export default {
-
   install(app: App) {
-    app.use(confirmPlugin)
-    app.use(iconPlugin)
-    app.use(modalPlugin)
-    app.use(notificationsPlugin)
-    app.use(popoverPlugin)
+    app.use(confirmPlugin);
+    app.use(iconPlugin);
+    app.use(modalPlugin);
+    app.use(notificationsPlugin);
+    app.use(popoverPlugin);
   },
-
-}
+};
 
 export { config } from "./config";
 
@@ -56,4 +62,3 @@ declare module "@vue/runtime-core" {
     Popover: typeof Popover;
   }
 }
-

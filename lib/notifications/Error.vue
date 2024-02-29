@@ -9,7 +9,7 @@ import Modal from "../modal/Modal.vue";
 
 const model = defineModel()
 
-const emit = defineEmits([ "hide" ])
+const emit = defineEmits(["hide"])
 
 function hide() {
   model.value = null
@@ -64,29 +64,29 @@ function getErrorMessage(error: unknown) {
 </script>
 
 <template>
-<Teleport v-if="model" to="body">
-  <Modal centered large :static="false" :zindex="1_000_000" @close="hide">
+  <Teleport v-if="model" to="body">
+    <Modal centered large :static="false" :zindex="1_000_000" @close="hide">
 
-    <template #header.bg-danger-subtle>
-      <div class="text-danger">
-        <Icon circle />
-        Error Occurred
-      </div>
-    </template>
+      <template #header.bg-danger-subtle>
+        <div class="text-danger">
+          <Icon circle />
+          Error Occurred
+        </div>
+      </template>
 
-    <template #body>
-      <slot>
-        <div style="white-space: pre;">
-          {{
-            typeof model === "string"
+      <template #body>
+        <slot>
+          <div style="white-space: pre;">
+            {{
+              typeof model === "string"
               ? model
               : getErrorMessage(model)
-          }}
-        </div>
-      </slot>
-    </template>
+            }}
+          </div>
+        </slot>
+      </template>
 
-  </Modal>
-</Teleport>
+    </Modal>
+  </Teleport>
 </template>
 

@@ -1,8 +1,10 @@
 {
   "extends": "@appril/tsconfig/app-vue.json",
   "include": [
-    ".",
-    "./env.d.ts"
-  ]
+    "lib"
+  ],
+  "compilerOptions": {
+    "outDir": "pkg"
+  }
 }
 

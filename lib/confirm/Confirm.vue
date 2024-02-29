@@ -7,7 +7,7 @@ import Modal from "../modal/Modal.vue";
 
 const model = defineModel()
 
-const emit = defineEmits([ "onConfirm", "onReject" ])
+const emit = defineEmits(["onConfirm", "onReject"])
 
 function confirm() {
   emit("onConfirm")
@@ -26,44 +26,42 @@ function close() {
 </script>
 
 <template>
+  <Teleport v-if="model" to="body">
+    <Modal scrollable>
 
-<Teleport v-if="model" to="body">
-  <Modal scrollable>
+      <template #body>
+        <slot>
+          Are you sure?
+        </slot>
+      </template>
 
-    <template #body>
-      <slot>
-        Are you sure?
-      </slot>
-    </template>
+      <template #footer>
 
-    <template #footer>
+        <slot name="cancelButton">
+          <button type="button" @click="reject" class="btn btn-sm btn-outline-secondary">
+            <slot name="cancelButtonIcon">
+              <Icon times />
+            </slot>
+            <slot name="cancelButtonText">
+              Cancel
+            </slot>
+          </button>
+        </slot>
 
-      <slot name="cancelButton">
-        <button type="button" @click="reject" class="btn btn-sm btn-outline-secondary">
-          <slot name="cancelButtonIcon">
-            <Icon times />
-          </slot>
-          <slot name="cancelButtonText">
-            Cancel
-          </slot>
-        </button>
-      </slot>
+        <slot name="confirmButton">
+          <button type="button" @click="confirm" class="btn btn-primary">
+            <slot name="confirmButtonIcon">
+              <Icon chevron-right />
+            </slot>
+            <slot name="confirmButtonText">
+              Continue
+            </slot>
+          </button>
+        </slot>
 
-      <slot name="confirmButton">
-        <button type="button" @click="confirm" class="btn btn-primary">
-          <slot name="confirmButtonIcon">
-            <Icon chevron-right />
-          </slot>
-          <slot name="confirmButtonText">
-            Continue
-          </slot>
-        </button>
-      </slot>
+      </template>
 
-    </template>
-
-  </Modal>
-</Teleport>
-
+    </Modal>
+  </Teleport>
 </template>
 

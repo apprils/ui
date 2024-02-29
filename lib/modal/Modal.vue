@@ -15,7 +15,7 @@ export type Props = {
   loading?: boolean,
 }
 
-const emit = defineEmits([ "mounted", "close" ])
+const emit = defineEmits(["mounted", "close"])
 
 const props = withDefaults(defineProps<Props>(), {
   static: true,
@@ -45,79 +45,76 @@ const slots = Object.keys(useSlots())
 
 const headerSlot = slots.find((e) => /^header\.?/.test(e))
 
-const [ , ...headerClasses ] = headerSlot
+const [, ...headerClasses] = headerSlot
   ? headerSlot.split(".")
-  : [ "", [] ]
+  : ["", []]
 
 const bodySlot = slots.find((e) => /^body\.?/.test(e))
 
-const [ , ...bodyClasses ] = bodySlot
+const [, ...bodyClasses] = bodySlot
   ? bodySlot.split(".")
-  : [ "", [] ]
+  : ["", []]
 
 const footerSlot = slots.find((e) => /^footer\.?/.test(e))
 
-const [ , ...footerClasses ] = footerSlot
+const [, ...footerClasses] = footerSlot
   ? footerSlot.split(".")
-  : [ "", [] ]
+  : ["", []]
 
 </script>
 
 <template>
+  <div class="modal-open">
 
-<div class="modal-open">
+    <div class="modal-backdrop" :class="{ show: true, fade: props.fade }"
+      :style="{ opacity: props.opacity, 'z-index': props.zindex }"></div>
 
-  <div class="modal-backdrop" :class="{ show: true, fade: props.fade }"
-    :style="{ opacity: props.opacity, 'z-index': props.zindex }"></div>
+    <div @click="$static || close()" :class="{ modal: true, show: true, fade: props.fade }"
+      :style="{ display: 'block', 'z-index': props.zindex + 5 }">
+      <div :class="{
+        'modal-dialog': true,
+        'modal-dialog-centered': props.centered,
+        'modal-dialog-scrollable': props.scrollable,
+        'modal-sm': props.small,
+        'modal-lg': props.large,
+      }">
+        <div class="modal-content" @click.stop="">
 
-  <div @click="$static || close()"
-    :class="{ modal: true, show: true, fade: props.fade }"
-    :style="{ display: 'block', 'z-index': props.zindex + 5 }">
-    <div :class="{
-      'modal-dialog': true,
-      'modal-dialog-centered': props.centered,
-      'modal-dialog-scrollable': props.scrollable,
-      'modal-sm': props.small,
-      'modal-lg': props.large,
-    }">
-      <div class="modal-content" @click.stop="">
+          <template v-if="headerSlot">
 
-        <template v-if="headerSlot">
+            <div class="modal-header align-items-start" :class="headerClasses">
 
-          <div class="modal-header align-items-start" :class="headerClasses">
+              <div class="modal-title">
+                <slot :name="headerSlot" v-bind="$slots[headerSlot]" />
+              </div>
 
-            <div class="modal-title">
-              <slot :name="headerSlot" v-bind="$slots[headerSlot]" />
+              <button type="button" @click="close" class="btn-close"></button>
+
             </div>
 
-            <button type="button" @click="close" class="btn-close"></button>
+          </template>
 
-          </div>
-
-        </template>
-
-        <template v-if="bodySlot">
-          <div class="modal-body" :class="bodyClasses">
-            <div v-if="props.loading" class="text-center p-3">
-              <span class="fa-solid fa-spinner fa-spin fa-fw fa-2x"></span>
+          <template v-if="bodySlot">
+            <div class="modal-body" :class="bodyClasses">
+              <div v-if="props.loading" class="text-center p-3">
+                <span class="fa-solid fa-spinner fa-spin fa-fw fa-2x"></span>
+              </div>
+              <slot v-else :name="bodySlot" v-bind="$slots[bodySlot]" />
             </div>
-            <slot v-else :name="bodySlot" v-bind="$slots[bodySlot]" />
-          </div>
-        </template>
+          </template>
 
-        <slot v-else />
+          <slot v-else />
 
-        <template v-if="footerSlot">
-          <div class="modal-footer justify-content-between" :class="footerClasses">
-            <slot :name="footerSlot" v-bind="$slots[footerSlot]" />
-          </div>
-        </template>
+          <template v-if="footerSlot">
+            <div class="modal-footer justify-content-between" :class="footerClasses">
+              <slot :name="footerSlot" v-bind="$slots[footerSlot]" />
+            </div>
+          </template>
 
+        </div>
       </div>
     </div>
+
   </div>
-
-</div>
-
 </template>
 

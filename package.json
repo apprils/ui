@@ -11,8 +11,6 @@
   "files": [
     "pkg/*"
   ],
-  "// ✨ seems exports.types not fully supported by all editors yet?": "",
-  "types": "./pkg/lib/index.d.ts",
   "exports": {
     ".": {
       "default": "./pkg/index.js",
@@ -23,7 +21,7 @@
     }
   },
   "scripts": {
-    "// ✨ lint": "",
+    "// ✨ linters": "",
     "lint": "biome lint ./lib",
     "// ✨ build": "",
     "build": "set -e; npm run lint; cd lib; vite build"
@@ -36,22 +34,22 @@
     }
   },
   "devDependencies": {
-    "@appril/tsconfig": "^0.2.2",
-    "@babel/types": "^7.23.6",
+    "@appril/tsconfig": "^0.2.5",
+    "@babel/types": "^7.24.0",
     "@biomejs/biome": "^1.5.3",
     "@types/bootstrap": "^5.2.10",
-    "@types/node": "^20.11.5",
-    "@vitejs/plugin-vue": "^5.0.3",
-    "release-it": "^17.0.1",
-    "vite": "^5.0.12",
-    "vite-plugin-checker": "^0.6.2",
-    "vite-plugin-dts": "^3.7.1",
+    "@types/node": "^20.11.22",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "release-it": "^17.1.1",
+    "vite": "^5.1.4",
+    "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-dts": "^3.7.3",
     "vue-tsc": "^1.8.27"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^6.5.1",
-    "bootstrap": "^5.3.2",
-    "floating-vue": "^5.2.0",
-    "vue": "^3.4.15"
+    "bootstrap": "^5.3.3",
+    "floating-vue": "^5.2.2",
+    "vue": "^3.4.21"
   }
 }

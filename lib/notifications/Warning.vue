@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const model = defineModel()
 
-const emit = defineEmits([ "hide" ])
+const emit = defineEmits(["hide"])
 
 function hide() {
   model.value = null
@@ -32,26 +32,25 @@ function hide() {
 </script>
 
 <template>
-<Notification v-if="model" v-bind="props" @hide="hide"
-  class="bg-danger-subtle border-0">
+  <Notification v-if="model" v-bind="props" @hide="hide" class="bg-danger-subtle border-0">
 
-  <slot name="header">
-    <div class="toast-header">
-      <div class="me-auto">
-        <slot name="title">
-          <strong>Warning</strong>
-        </slot>
+    <slot name="header">
+      <div class="toast-header">
+        <div class="me-auto">
+          <slot name="title">
+            <strong>Warning</strong>
+          </slot>
+        </div>
+        <button @click="hide" type="button" class="btn-close"></button>
       </div>
-      <button @click="hide" type="button" class="btn-close"></button>
-    </div>
-  </slot>
-
-  <div class="toast-body me-auto">
-    <slot>
-      {{ model }}
     </slot>
-  </div>
 
-</Notification>
+    <div class="toast-body me-auto">
+      <slot>
+        {{ model }}
+      </slot>
+    </div>
+
+  </Notification>
 </template>
 

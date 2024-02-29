@@ -1,4 +1,3 @@
-
 export type Position =
   | "top-left"
   | "top-center"
@@ -8,5 +7,4 @@ export type Position =
   | "middle-right"
   | "bottom-left"
   | "bottom-center"
-  | "bottom-right"
-
+  | "bottom-right";

@@ -48,8 +48,8 @@ type Props = {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  triggers: [ "click" ] as any,
-  popperTriggers: [ "click" ] as any,
+  triggers: ["click"] as any,
+  popperTriggers: ["click"] as any,
   distance: 5,
   skidding: 0,
   placement: "bottom",
@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<Props>(), {
   maxHeight: "60vh",
 })
 
-const emit = defineEmits([ "onMounted" ])
+const emit = defineEmits(["onMounted"])
 
 function mounted() {
   nextTick(() => emit("onMounted"))
@@ -68,39 +68,37 @@ function mounted() {
 </script>
 
 <template>
-<VMenu no-auto-focus @apply-show="mounted" v-bind="props">
+  <VMenu no-auto-focus @apply-show="mounted" v-bind="props">
 
-  <div @click.prevent.stop="">
-    <slot />
-  </div>
+    <div @click.prevent.stop="">
+      <slot />
+    </div>
 
-  <template #popper="{ hide }">
+    <template #popper="{ hide }">
 
-    <template v-if="$slots.header">
-      <div @click.prevent.stop="" class="bg-light appril-ui--popover--header">
-        <slot name="header" :hide="hide" />
-      </div>
+      <template v-if="$slots.header">
+        <div @click.prevent.stop="" class="bg-light appril-ui--popover--header">
+          <slot name="header" :hide="hide" />
+        </div>
+      </template>
+
+      <template v-if="$slots.list">
+        <div class="d-flex flex-column align-items-start appril-ui--popover--list" :style="{ 'max-height': maxHeight }">
+          <slot name="list" :hide="hide" />
+        </div>
+      </template>
+
+      <template v-if="$slots.bare">
+        <div class="appril-ui--popover--bare">
+          <slot name="bare" :hide="hide" />
+        </div>
+      </template>
+
     </template>
-
-    <template v-if="$slots.list">
-      <div class="d-flex flex-column align-items-start appril-ui--popover--list"
-        :style="{ 'max-height': maxHeight }">
-        <slot name="list" :hide="hide" />
-      </div>
-    </template>
-
-    <template v-if="$slots.bare">
-      <div class="appril-ui--popover--bare">
-        <slot name="bare" :hide="hide" />
-      </div>
-    </template>
-
-  </template>
-</VMenu>
+  </VMenu>
 </template>
 
 <style>
-
 .appril-ui--popover--header {
   margin: 0;
   padding: 5px 10px;
@@ -113,7 +111,7 @@ function mounted() {
   overflow: auto;
 }
 
-.appril-ui--popover--list > * {
+.appril-ui--popover--list>* {
   margin: 0;
   padding: 5px 10px;
   line-height: 1;
@@ -123,7 +121,7 @@ function mounted() {
   white-space: nowrap;
 }
 
-.appril-ui--popover--list > *:hover {
+.appril-ui--popover--list>*:hover {
   background: #efefef;
 }
 
@@ -136,6 +134,5 @@ function mounted() {
   overflow: hidden;
   border-bottom: 1px solid #ccc;
 }
-
 </style>
 

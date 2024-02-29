@@ -1,4 +1,3 @@
-
 export const config = {
   successMessage: "Default Success Message",
   successPosition: "top-center",
@@ -9,7 +8,6 @@ export const config = {
   warningDelay: 10_000,
   warningAutohide: true,
   warningAnimation: true,
-}
+};
 
 export default config;
-

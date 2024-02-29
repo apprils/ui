@@ -14,20 +14,20 @@ function classes(attrs: {
     icon = attrNames[0] || "",
   } = attrs
 
-  const [ iconName, iconSet = "solid" ] = icon.split(".")
+  const [iconName, iconSet = "solid"] = icon.split(".")
 
   return [
     iconSet,
     iconName,
     ..."size" in attrs
-      ? [ attrs.size ]
+      ? [attrs.size]
       : [],
     ..."spin" in attrs && attrs.spin !== false
-      ? [ "spin" ]
+      ? ["spin"]
       : [],
     ...attrs.fw === false
       ? []
-      : [ "fw" ],
+      : ["fw"],
   ].map((e) => "fa-" + e)
 
 }
@@ -35,6 +35,6 @@ function classes(attrs: {
 </script>
 
 <template>
-<span :class="classes($attrs)"></span>
+  <span :class="classes($attrs)"></span>
 </template>
 

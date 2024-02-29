@@ -1,4 +1,3 @@
-
 import { resolve } from "path";
 
 import { defineConfig } from "vite";
@@ -9,14 +8,13 @@ import dtsPlugin from "vite-plugin-dts";
 import { peerDependencies } from "../package.json";
 
 export default defineConfig({
-
   build: {
     minify: false,
     outDir: "../pkg",
     emptyOutDir: true,
     lib: {
       entry: resolve(__dirname, "index.ts"),
-      formats: [ "es" ],
+      formats: ["es"],
       fileName: () => "index.js",
     },
     rollupOptions: {
@@ -29,6 +27,4 @@ export default defineConfig({
     checkerPlugin({ vueTsc: true }),
     dtsPlugin({ insertTypesEntry: true }),
   ],
-
-})
-
+});
